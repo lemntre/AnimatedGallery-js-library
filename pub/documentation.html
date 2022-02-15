@@ -1,0 +1,261 @@
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+        <link rel = "stylesheet" type="text/css" href = "./js/landing_page.css">
+        <title>AnimatedGallery Javascript Library</title>
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script async type = "text/javascript" src = './js/dom_load_async.js'></script>
+    </head>
+    <body>
+        <div id = 'myId'></div>
+        <div class='top_header'>
+            <a class='title_redirect  title_text_animated' href = 'index.html'>AnimatedGallery.js</a>
+            <div class='navigation'>
+                <a href="examples_page.html" class="not_current_page_nagivation">Examples</a>
+                <a href ="documentation.html" class="current_page_nagivation">Documentation</a>
+            </div>
+        </div>
+        <div class="header">
+            Getting Started
+        </div>
+        <div class="example_description">
+            <p class="paragraph_indent">Include <span class="highlighted_text">AnimatedGallery.js</span>
+            and <span class="highlighted_text">AnimatedGallery.css</span> in your current directory, 
+            import the package and jQuery using the following script:</p>
+        </div>
+        <div class="code_container">
+            <p class="example_code">
+                &lt;link rel="stylesheet" type="text/css" href="AnimatedGallery.css"&gt; <br>
+                &lt;script defer type="text/javascript" src="AnimatedGallery.js"&gt;&lt;/script&gt; <br>
+                &lt;script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class="header">
+            API
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Creating a New AnimatedGallery:</span> new AnimatedGallery(containerID)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent">To create a new AnimatedGallery instance, pass in the id of 
+                    the parent container that should contain your AnimatedGallery. </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    &lt;div id="myGalleryID">&lt;/div> <br>
+                    const myGallery = new AnimatedGallery("myGalleryID")
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Setting Style:</span> .setStyle(styleName)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent">Sets the style of the gallery, valid inputs for 
+                    <span class="highlighted_text">styleName</span> are gird, line up, diamond, panel, chessboard. 
+                    See examples page for samples.</p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.setStyle('grid') <br>
+                    myGallery.setStyle('line up') <br>
+                    myGallery.setStyle('diamond') <br>
+                    myGallery.setStyle('panel') <br>
+                    myGallery.setStyle('chessboard') <br>
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Setting the Gallery Elements:</span> .setElements(myElements)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent">Sets the elements in the gallery. Valid input is an array, each element
+                    of the array must have: a src attribute that is the source of the thumbnail image; a title attribute that is the 
+                    title of the image that will be displayed in the lightbox; a description attribute that is the description of 
+                    the image that will be displayed in the lightbox. An element can also have an optional index attribute which represents the 
+                    order that the elements will be displayed in, the default index value of each element is its position in the elements array. 
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    const myElements = [<br> 
+                    &emsp;&emsp;&emsp;{src: 'image1.jpg', title:'image 1', description: 'This is the first image'} <br>
+                    &emsp;&emsp;&emsp;{src: 'image2.jpg', title:'image 2', description: 'This is the second image', index: 2}]<br>
+                    myGallery.setElements(myElements)
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Making the Gallery:</span> .makeGallery()
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent">Makes the gallery with the given style and elements.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.makeGallery()
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Setting Animation:</span> .setAnimation(animationName)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Sets the Animation of the gallery that applies to every thumbnail image.
+                    Valid inputs for 
+                    <span class="highlighted_text">animationName</span> are fade in, slide up, slide down, slide left,
+                    side right, slide cross v, slide cross h, none. See examples page for samples.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.setAnimation('fade in') <br>
+                    myGallery.setAnimation('slide up') <br>
+                    myGallery.setAnimation('slide down') <br>
+                    myGallery.setAnimation('slide left') <br>
+                    myGallery.setAnimation('slide right') <br>
+                    myGallery.setAnimation('slide cross v') <br>
+                    myGallery.setAnimation('slide cross h') <br>
+                    myGallery.setAnimation('none')
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Setting Sorting:</span> .setSorting(sortingName)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Sets the order the elements are sorted by. Valid inputs for 
+                    <span class="highlighted_text">sortingName</span> are alphabetical, clicks, asInput. See examples
+                    page for samples.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.setSorting('alphabetical') <br>
+                    myGallery.setSorting('clicks') <br>
+                    myGallery.setSorting('asInput')
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Setting the Hover Animation:</span> .setHoverAnimation(hoverAnimation)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Sets the hover animation that applies to each thumbnail image. 
+                    Valid inputs for <span class="highlighted_text">hoverAnimation</span> are scale up, scale down, drop shadow.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.setHoverAnimation('scale up') <br>
+                    myGallery.setHoverAnimation('scale down') <br>
+                    myGallery.setHoverAnimation('drop shadow')
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Setting the Animation Duration:</span> .setAnimationDuration(duration)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Sets the duration of the animation that applies to all thumbnail images.
+                    Valid inputs for <span class="highlighted_text">duration</span> is a string that is a valid time value.
+                    See examples page for samples.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.setAnimationDuration('5s')
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Changing the Gallery Style:</span> .newStyle(newStyle)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Changes the style of an existing gallery. Valid inputs 
+                    for <span class="highlighted_text">newStyle</span> are the same as styleName from the 
+                    .setAnimation() function description.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">   
+                    myGallery.newStyle('line up')
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Changing the Gallery Animation:</span> .newAnimation(newAnimation)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Changes the animation of an exisiting gallery. Valid inputs for
+                    <span class="highlighted_text">newAnimation</span> are the same as animationName from the 
+                    .setAnimation() function description.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">    
+                    myGallery.newAnimation('slide right')
+                </p>    
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Changing the Gallery Sorting:</span> .sortElements(newSorting)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Changes the sorting order of an existing gallery. Valid inputs for 
+                    <span class="highlighted_text">newSorting</span> are the same as sortingName from the .setSorting()
+                    function description.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.sortElements('alphabetical')
+                </p>
+            </div>
+        </div>
+
+        <div class="example_container">
+            <div class="example_gallery_titles">
+                <span class="black_title_text">Adding Elements:</span> .addNewElement(newElement)
+            </div>
+            <div class="example_description">
+                <p class="paragraph_indent"> Adds a new element to an existing gallery.
+                </p>
+            </div>
+            <div class="code_container">
+                <p class="example_code">
+                    myGallery.addNewElement(<br>
+                    &emsp;&emsp;&emsp;{src:'image3.jpg', title:'image 3', description:'This is the third image.'})
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer_text">AnimatedGallery.js created by Angelina Zhang. 2021.</p>
+        </div>
+    </body>
+</html>

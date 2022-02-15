@@ -1,0 +1,403 @@
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+        <link rel = "stylesheet" type="text/css" href = "./js/AnimatedGallery.css">
+        <link rel = "stylesheet" type="text/css" href = "./js/landing_page.css">
+        <title>Animated Gallery Library</title>
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer type = "text/javascript" src = './js/AnimatedGallery.js'></script>
+        <script defer type = "text/javascript" src = './js/example.js'></script>
+        <script async type = "text/javascript" src = './js/dom_load_async.js'></script>
+    </head>
+    <body>
+        <div id='myId'></div>
+        <div class='top_header'>
+            <a class='title_redirect  title_text_animated' href = 'index.html'>AnimatedGallery.js</a>
+            <div class='navigation'>
+                <a href="examples_page.html" class="current_page_nagivation">Examples</a>
+                <a href ="documentation.html" class="not_current_page_nagivation">Documentation</a>
+            </div>
+        </div>
+
+        <div class='header'> Examples </div>
+        <div class = example_gallery_container> 
+
+        <div class="example_description">
+            <p class="paragraph_indent">This page displays the five types of galleries available,
+                <span class="highlighted_text">grid, line up, diamond, panel, and chessboard</span>. 
+            </p>
+            <p class="paragraph_indent">
+                Click each image to see it in detail with its title and description.
+            </p>
+            <p class="paragraph_indent">
+                Hover over the dropdown menus above each gallery to change the according style. 
+            </p>
+            <p class="paragraph_indent">
+                Sorting refers to the order the images are sorted by. There are 3 orderings available, 
+                <span class="highlighted_text">alphabetical, clicks, and as input</span>. 
+            </p>
+
+            <p class="paragraph_indent">
+                <span class="highlighted_text">Alphabetical:</span> alphabetical by title of the image.
+            </p>
+            <p class="paragraph_indent">
+                <span class="highlighted_text">Clicks:</span> descending order by number of times users 
+                have clicked on the image, all images start with a times clicked of zero. To test this sorting
+                click into one of the images and sort.
+            </p>
+            <p class="paragraph_indent">
+                <span class="highlighted_text">As input:</span> sorted by the order the images were inputted in.
+                The default sorting for all galleries on this page is as input.
+            </p>
+            
+            <p class="paragraph_indent">
+                Hover Animation refers to the animation triggered by hovering over that image, 
+                this animation applies to individual images. There are at most 3 hover animations available, 
+                <span class="highlighted_text">scale up, scale down, and drop shadow</span>. 
+            </p>
+            <p class="paragraph_indent">
+                Animation refers to the animation that applies to all the images when the gallery is initially 
+                displayed. There are 7 animations available. 
+                <span class="highlighted_text">fade in, slide up, slide down, slide left, slide right,
+                    slide cross vertically, slide cross horizontally</span>.
+            <p class="paragraph_indent">
+                To change the speed of the animation, input a value into the input field, 
+                <span class="highlighted_text">example: '3s'</span>, then clicking the set button will change the 
+                speed of the animation. If the input is invalid, nothing will happen.
+            </p>
+            </p>
+        </div>
+    </div>
+        <div class='example_container'>
+            <div class='example_gallery_titles'>Grid Gallery</div>
+            <div class="sorting_dropdown">
+                <button class="sorting_dropbutton">Sorting</button>
+                <div class="sorting_dropdown_content">
+                    <a onclick="ag1.sortElements('alphabetical')">Alphabetical</a>
+                    <a onclick="ag1.sortElements('asInput')">As Input</a>
+                    <a onclick="ag1.sortElements('clicks')">Clicks</a>
+                </div>
+            </div>
+
+            <div class="hover_dropdown">
+                <button class="hover_dropbutton">Hover Animation</button>
+                <div class="hover_dropdown_content">
+                    <a onclick="ag1.newHoverAnimation('scale down')">Scale Down</a>
+                    <a onclick="ag1.newHoverAnimation('scale up')">Scale Up</a>
+                    <a onclick="ag1.newHoverAnimation('drop shadow')">Drop Shadow</a>
+                </div>
+            </div>
+
+            <div class="animation_dropdown">
+                <button class="animation_dropbutton">Animation</button>
+                <div class="animation_dropdown_content">
+                    <a onclick="ag1.newAnimation('fade in')">Fade In</a>
+                    <a onclick="ag1.newAnimation('slide up')">Slide Up</a>
+                    <a onclick="ag1.newAnimation('slide down')">Slide Down</a>
+                    <a onclick="ag1.newAnimation('slide left')">Slide Left</a>
+                    <a onclick="ag1.newAnimation('slide right')">Slide Right</a>
+                    <a onclick="ag1.newAnimation('slide cross v')">Slide Cross Vertical</a>
+                    <a onclick="ag1.newAnimation('slide cross h')">Slide Cross Horizontal</a>
+                    <a onclick="ag1.newAnimation('none')">None</a>
+                </div>
+            </div>
+            <div class="speed_input">
+                <input class="input_box" id="speed1" type="text" placeholder="animation speed, ex: 3s">
+                <button class="speed_button" onclick="ag1.setAnimationDuration(document.getElementById('speed1').value)">Set</button>
+            </div>
+            <div class="example_gallery_container">
+                <div id ='gallery1'></div>
+            </div>
+            
+            <div class="code_container">
+                <p class="example_code">&lt;div id='gallery1'&gt;&lt;/div&gt;</p>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">const ag1 = new AnimatedGallery('gallery1')</p>
+                <p class="example_code">  <br> ag1.setStyle('grid') <br>
+                    ag1.setAnimation('none')  <br>
+                    ag1.setSorting('asInput') <br> 
+                    ag1.setElements(<br>
+                    &emsp;[{src: 'img1.jpg', title: 'D', description: 'This is a picture of doggo.'},  <br> 
+                    &emsp; {src: 'img2.jpg', title: 'C', description: 'This is another picture of doggo.'}, <br>
+                    &emsp; {src: 'img3.jpg', title: 'B', description: 'This is a third picture of doggo.'}, <br>
+                    &emsp; {src: 'img4.jpg', title: 'A', description: 'This is a fourth picture of doggo.'}, <br>
+                    &emsp; {src: 'img5.jpg', title: 'E', description: 'Picture of doggos.'}, <br>
+                    &emsp; {src: 'img6.jpg', title: 'F', description: 'Picture of cute doggo.'}, <br>
+                    &emsp; {src: 'img7.jpg', title: 'G', description: 'Picture of cute doge.'}, <br>
+                    &emsp; {src: 'img8.jpg', title: 'B', description: 'Picture of cute doge :).'}, <br>
+                    &emsp; {src: 'img9.jpg', title: 'H', description: 'Picture of smort doge.'}, <br>
+                    &emsp; {src: 'img10.jpg', title: 'M', description: 'Picture of smol doggo.'}]) <br>
+                    </p> 
+            </div>
+    
+        </div>
+        <div class='example_container'>
+            <div class='example_gallery_titles'>Line up Gallery</div>
+            <div class="sorting_dropdown">
+                <button class="sorting_dropbutton">Sorting</button>
+                <div class="sorting_dropdown_content">
+                    <a onclick="ag2.sortElements('alphabetical')">Alphabetical</a>
+                    <a onclick="ag2.sortElements('asInput')">As Input</a>
+                    <a onclick="ag2.sortElements('clicks')">Clicks</a>
+                </div>
+            </div>
+
+            <div class="hover_dropdown">
+                <button class="hover_dropbutton">Hover Animation</button>
+                <div class="hover_dropdown_content">
+                    <a onclick="ag2.newHoverAnimation('scale down')">Scale Down</a>
+                    <a onclick="ag2.newHoverAnimation('scale up')">Scale Up</a>
+                    <a onclick="ag2.newHoverAnimation('drop shadow')">Drop Shadow</a>
+                </div>
+            </div>
+
+            <div class="animation_dropdown">
+                <button class="animation_dropbutton">Animation</button>
+                <div class="animation_dropdown_content">
+                    <a onclick="ag2.newAnimation('fade in')">Fade In</a>
+                    <a onclick="ag2.newAnimation('slide up')">Slide Up</a>
+                    <a onclick="ag2.newAnimation('slide down')">Slide Down</a>
+                    <a onclick="ag2.newAnimation('slide left')">Slide Left</a>
+                    <a onclick="ag2.newAnimation('slide right')">Slide Right</a>
+                    <a onclick="ag2.newAnimation('slide cross v')">Slide Cross Vertical</a>
+                    <a onclick="ag2.newAnimation('slide cross h')">Slide Cross Horizontal</a>
+                    <a onclick="ag2.newAnimation('none')">None</a>
+                </div>
+            </div>
+            <div class="speed_input">
+                <input class="input_box" id="speed2" type="text" placeholder="animation speed, ex: 3s">
+                <button class="speed_button" onclick="ag2.setAnimationDuration(document.getElementById('speed2').value)">Set</button>
+            </div>
+            <div class="example_gallery_container">
+                <div id ='gallery2'></div>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">&lt;div id='gallery2'&gt;&lt;/div&gt;</p>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">const ag2 = new AnimatedGallery('gallery2')</p>
+                <p class="example_code">  <br> ag2.setStyle('line up') <br>
+                    ag2.setAnimation('none')  <br>
+                    ag2.setSorting('asInput') <br> 
+                    ag2.setElements(<br>
+                    &emsp;[{src: 'img1.jpg', title: 'D', description: 'This is a picture of doggo.'},  <br> 
+                    &emsp; {src: 'img2.jpg', title: 'C', description: 'This is another picture of doggo.'}, <br>
+                    &emsp; {src: 'img3.jpg', title: 'B', description: 'This is a third picture of doggo.'}, <br>
+                    &emsp; {src: 'img4.jpg', title: 'A', description: 'This is a fourth picture of doggo.'}, <br>
+                    &emsp; {src: 'img5.jpg', title: 'E', description: 'Picture of doggos.'}, <br>
+                    &emsp; {src: 'img6.jpg', title: 'F', description: 'Picture of cute doggo.'}, <br>
+                    &emsp; {src: 'img7.jpg', title: 'G', description: 'Picture of cute doge.'}, <br>
+                    &emsp; {src: 'img8.jpg', title: 'B', description: 'Picture of cute doge :).'}, <br>
+                    &emsp; {src: 'img9.jpg', title: 'H', description: 'Picture of smort doge.'}]) <br>
+                    </p> 
+            </div>
+            
+        </div>
+        
+
+        <div class='example_container'> 
+            <div class='example_gallery_titles'>Diamond Gallery</div>
+            <div class="sorting_dropdown">
+                <button class="sorting_dropbutton">Sorting</button>
+                <div class="sorting_dropdown_content">
+                    <a onclick="ag3.sortElements('alphabetical')">Alphabetical</a>
+                    <a onclick="ag3.sortElements('asInput')">As Input</a>
+                    <a onclick="ag3.sortElements('clicks')">Clicks</a>
+                </div>
+            </div>
+
+            <div class="hover_dropdown">
+                <button class="hover_dropbutton">Hover Animation</button>
+                <div class="hover_dropdown_content">
+                    <a onclick="ag3.newHoverAnimation('scale down')">Scale Down</a>
+                    <a onclick="ag3.newHoverAnimation('scale up')">Scale Up</a>
+                </div>
+            </div>
+
+            <div class="animation_dropdown">
+                <button class="animation_dropbutton">Animation</button>
+                <div class="animation_dropdown_content">
+                    <a onclick="ag3.newAnimation('fade in')">Fade In</a>
+                    <a onclick="ag3.newAnimation('slide up')">Slide Up</a>
+                    <a onclick="ag3.newAnimation('slide down')">Slide Down</a>
+                    <a onclick="ag3.newAnimation('slide left')">Slide Left</a>
+                    <a onclick="ag3.newAnimation('slide right')">Slide Right</a>
+                    <a onclick="ag3.newAnimation('slide cross v')">Slide Cross Vertical</a>
+                    <a onclick="ag3.newAnimation('slide cross h')">Slide Cross Horizontal</a>
+                    <a onclick="ag3.newAnimation('none')">None</a>
+                </div>
+            </div>
+            <div class="speed_input">
+                <input class="input_box" id="speed3" type="text" placeholder="animation speed, ex: 3s">
+                <button class="speed_button" onclick="ag3.setAnimationDuration(document.getElementById('speed3').value)">Set</button>
+            </div>
+            <div class="example_gallery_container">
+                <div id='gallery3'></div>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">&lt;div id='gallery3'&gt;&lt;/div&gt;</p>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">const ag3 = new AnimatedGallery('gallery3')</p>
+                <p class="example_code">  <br> ag3.setStyle('diamond') <br>
+                    ag3.setAnimation('none')  <br>
+                    ag3.setSorting('asInput') <br> 
+                    ag3.setElements(<br>
+                    &emsp;[{src: 'img1.jpg', title: 'D', description: 'This is a picture of doggo.'},  <br> 
+                    &emsp; {src: 'img2.jpg', title: 'C', description: 'This is another picture of doggo.'}, <br>
+                    &emsp; {src: 'img3.jpg', title: 'B', description: 'This is a third picture of doggo.'}, <br>
+                    &emsp; {src: 'img4.jpg', title: 'A', description: 'This is a fourth picture of doggo.'}, <br>
+                    &emsp; {src: 'img5.jpg', title: 'E', description: 'Picture of doggos.'}, <br>
+                    &emsp; {src: 'img6.jpg', title: 'F', description: 'Picture of cute doggo.'}, <br>
+                    &emsp; {src: 'img7.jpg', title: 'G', description: 'Picture of cute doge.'}, <br>
+                    &emsp; {src: 'img8.jpg', title: 'B', description: 'Picture of cute doge :).'}, <br>
+                    &emsp; {src: 'img9.jpg', title: 'H', description: 'Picture of smort doge.'}, <br>
+                    &emsp; {src: 'img10.jpg', title: 'M', description: 'Picture of smol doggo.'}]) <br>
+                    </p> 
+            </div>
+           
+        </div>
+       
+        <div class='example_container'>
+            <div class='example_gallery_titles'>Panel Gallery</div>
+            <div class="sorting_dropdown">
+                <button class="sorting_dropbutton">Sorting</button>
+                <div class="sorting_dropdown_content">
+                    <a onclick="ag4.sortElements('alphabetical')">Alphabetical</a>
+                    <a onclick="ag4.sortElements('asInput')">As Input</a>
+                    <a onclick="ag4.sortElements('clicks')">Clicks</a>
+                </div>
+            </div>
+
+            <div class="hover_dropdown">
+                <button class="hover_dropbutton">Hover Animation</button>
+                <div class="hover_dropdown_content">
+                    <a onclick="ag4.newHoverAnimation('scale down')">Scale Down</a>
+                    <a onclick="ag4.newHoverAnimation('scale up')">Scale Up</a>
+                    <a onclick="ag4.newHoverAnimation('drop shadow')">Drop Shadow</a>
+                </div>
+            </div>
+
+            <div class="animation_dropdown">
+                <button class="animation_dropbutton">Animation</button>
+                <div class="animation_dropdown_content">
+                    <a onclick="ag4.newAnimation('fade in')">Fade In</a>
+                    <a onclick="ag4.newAnimation('slide up')">Slide Up</a>
+                    <a onclick="ag4.newAnimation('slide down')">Slide Down</a>
+                    <a onclick="ag4.newAnimation('slide left')">Slide Left</a>
+                    <a onclick="ag4.newAnimation('slide right')">Slide Right</a>
+                    <a onclick="ag4.newAnimation('slide cross v')">Slide Cross Vertical</a>
+                    <a onclick="ag4.newAnimation('slide cross h')">Slide Cross Horizontal</a>
+                    <a onclick="ag4.newAnimation('none')">None</a>
+                </div>
+            </div>
+            <div class="speed_input">
+                <input class="input_box" id="speed4" type="text" placeholder="animation speed, ex: 3s">
+                <button class="speed_button" onclick="ag4.setAnimationDuration(document.getElementById('speed4').value)">Set</button>
+            </div>
+            <div class="example_gallery_container">
+                <div id='gallery4'></div>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">&lt;div id='gallery4'&gt;&lt;/div&gt;</p>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">const ag4 = new AnimatedGallery('gallery4')</p>
+                <p class="example_code">  <br> ag4.setStyle('panel') <br>
+                    ag4.setAnimation('none')  <br>
+                    ag4.setSorting('asInput') <br> 
+                    ag4.setElements(<br>
+                    &emsp;[{src: 'img1.jpg', title: 'D', description: 'This is a picture of doggo.'},  <br> 
+                    &emsp; {src: 'img2.jpg', title: 'C', description: 'This is another picture of doggo.'}, <br>
+                    &emsp; {src: 'img3.jpg', title: 'B', description: 'This is a third picture of doggo.'}, <br>
+                    &emsp; {src: 'img4.jpg', title: 'A', description: 'This is a fourth picture of doggo.'}, <br>
+                    &emsp; {src: 'img5.jpg', title: 'E', description: 'Picture of doggos.'}, <br>
+                    &emsp; {src: 'img6.jpg', title: 'F', description: 'Picture of cute doggo.'}, <br>
+                    &emsp; {src: 'img7.jpg', title: 'G', description: 'Picture of cute doge.'}, <br>
+                    &emsp; {src: 'img8.jpg', title: 'B', description: 'Picture of cute doge :).'}, <br>
+                    &emsp; {src: 'img9.jpg', title: 'H', description: 'Picture of smort doge.'}, <br>
+                    &emsp; {src: 'img10.jpg', title: 'M', description: 'Picture of smol doggo.'}]) <br>
+                    </p> 
+            </div>
+            
+        </div>
+
+        <div class='example_container'>
+            <div class='example_gallery_titles'>Chessboard Gallery</div>
+            <div class="sorting_dropdown">
+                <button class="sorting_dropbutton">Sorting</button>
+                <div class="sorting_dropdown_content">
+                    <a onclick="ag5.sortElements('alphabetical')">Alphabetical</a>
+                    <a onclick="ag5.sortElements('asInput')">As Input</a>
+                    <a onclick="ag5.sortElements('clicks')">Clicks</a>
+                </div>
+            </div>
+
+            <div class="hover_dropdown">
+                <button class="hover_dropbutton">Hover Animation</button>
+                <div class="hover_dropdown_content">
+                    <a onclick="ag5.newHoverAnimation('scale down')">Scale Down</a>
+                    <a onclick="ag5.newHoverAnimation('scale up')">Scale Up</a>
+                    <a onclick="ag5.newHoverAnimation('drop shadow')">Drop Shadow</a>
+                </div>
+            </div>
+
+            <div class="animation_dropdown">
+                <button class="animation_dropbutton">Animation</button>
+                <div class="animation_dropdown_content">
+                    <a onclick="ag5.newAnimation('fade in')">Fade In</a>
+                    <a onclick="ag5.newAnimation('slide up')">Slide Up</a>
+                    <a onclick="ag5.newAnimation('slide down')">Slide Down</a>
+                    <a onclick="ag5.newAnimation('slide left')">Slide Left</a>
+                    <a onclick="ag5.newAnimation('slide right')">Slide Right</a>
+                    <a onclick="ag5.newAnimation('slide cross v')">Slide Cross Vertical</a>
+                    <a onclick="ag5.newAnimation('slide cross h')">Slide Cross Horizontal</a>
+                    <a onclick="ag5.newAnimation('none')">None</a>
+                </div>
+            </div>
+            <div class="speed_input">
+                <input class="input_box" id="speed5" type="text" placeholder="animation speed, ex: 3s">
+                <button class="speed_button" onclick="ag5.setAnimationDuration(document.getElementById('speed5').value)">Set</button>
+            </div>
+            <div class="example_gallery_container">
+                <div id='gallery5'></div>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">&lt;div id='gallery5'&gt;&lt;/div&gt;</p>
+            </div>
+
+            <div class="code_container">
+                <p class="example_code">const ag5 = new AnimatedGallery('gallery5')</p>
+                <p class="example_code">  <br> ag5.setStyle('chessboard') <br>
+                    ag5.setAnimation('none')  <br>
+                    ag5.setSorting('asInput') <br> 
+                    ag5.setElements(<br>
+                    &emsp;[{src: 'img1.jpg', title: 'D', description: 'This is a picture of doggo.'},  <br> 
+                    &emsp; {src: 'img2.jpg', title: 'C', description: 'This is another picture of doggo.'}, <br>
+                    &emsp; {src: 'img3.jpg', title: 'B', description: 'This is a third picture of doggo.'}, <br>
+                    &emsp; {src: 'img4.jpg', title: 'A', description: 'This is a fourth picture of doggo.'}, <br>
+                    &emsp; {src: 'img5.jpg', title: 'E', description: 'Picture of doggos.'}, <br>
+                    &emsp; {src: 'img6.jpg', title: 'F', description: 'Picture of cute doggo.'}, <br>
+                    &emsp; {src: 'img7.jpg', title: 'G', description: 'Picture of cute doge.'}, <br>
+                    &emsp; {src: 'img8.jpg', title: 'B', description: 'Picture of cute doge :).'}]) <br>
+                    </p> 
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer_text">AnimatedGallery.js created by Angelina Zhang. 2021.</p>
+        </div>
+
+
+    </body>
+</html>
